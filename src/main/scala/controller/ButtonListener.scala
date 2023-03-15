@@ -8,7 +8,7 @@ import view.BattleField
 class ButtonListener() extends EventHandler[ActionEvent] {
   override def handle(event: ActionEvent): Unit = {
     Battle.firstButton()
-    BattleField.createButtons("second",Battle.EnemyChar2)
+    BattleField.createButtons("Healer",Battle.EnemyChar2)
 
   }
 }
@@ -30,6 +30,6 @@ class PowerListener(power: String, character: CharacterSample,enemy: CharacterSa
 // Allows to animate between interactions
 class AnimateListener() extends EventHandler[ActionEvent] {
   override def handle(event: ActionEvent): Unit = {
-    Battle.animate("second","seconde", -5)
+    Battle.animate("Healer","EHealer", -5)
   }
 }

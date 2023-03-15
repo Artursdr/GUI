@@ -11,14 +11,14 @@ object Battle {
   var string =
     """{"playerParty":{"characters": [
       |{"name":"Archer", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-      |{"name":"second", "hp":40, "maxHP":50, "battleOptions": ["heal","attack","nothing","nothing again"]},
-      |{"name":"third", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-      |{"name":"fourth", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
+      |{"name":"Healer", "hp":20, "maxHP":50, "battleOptions": ["Heal","Attack","Other","Another"]},
+      |{"name":"Tank", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"Fighter", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
       |"enemyParty":{"characters": [
-      |{"name":"firsten", "hp":0, "maxHP":50, "battleOptions": ["","","",""]},
-      |{"name":"seconde", "hp":45, "maxHP":50, "battleOptions": ["","","",""]},
-      |{"name":"thirde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-      |{"name":"fourthe", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
+      |{"name":"EArcher", "hp":0, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"EHealer", "hp":45, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"ETank", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"EFighter", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
 
 
   var data = fromJSON(string)
@@ -50,15 +50,15 @@ object Battle {
   def reset(): Unit ={
     Battle.string =
       """{"playerParty":{"characters": [
-        |{"name":"first", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-        |{"name":"second", "hp":50, "maxHP":50, "battleOptions": ["attack","heal","nothing","nothing2"]},
-        |{"name":"third", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-        |{"name":"fourth", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
+        |{"name":"Archer", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"Healer", "hp":20, "maxHP":50, "battleOptions": ["Heal","Attack","Other","Another"]},
+        |{"name":"Tank", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"Fighter", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
         |"enemyParty":{"characters": [
-        |{"name":"firste", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}
-        |,{"name":"seconde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-        |{"name":"thirde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
-        |{"name":"fourthe", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
+        |{"name":"EArcher", "hp":0, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"EHealer", "hp":45, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"ETank", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"EFighter", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
 
     data = fromJSON(string)
     YourChar1 = party(0)
@@ -81,13 +81,13 @@ object Battle {
 
   //Fighting mechanics
   def takeAction(power: String, character: CharacterSample, enemy: CharacterSample): Unit = {
-    if (power == "nothing"){
+    if (power == "other"){
 
-    }else if(power == "attack"){
-      animate("second","seconde", -10)
+    }else if(power == "Attack"){
+      animate("Healer","EHealer", -10)
 
-    }else if(power == "heal"){
-      animate("second","seconde", 10)
+    }else if(power == "Heal"){
+      animate("Healer","EHealer", 10)
 
     }
     BattleField.drawcharacters()
