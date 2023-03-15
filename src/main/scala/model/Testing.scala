@@ -8,19 +8,16 @@ import scala.collection.mutable.{ListBuffer, Map}
 object Testing {
 
   var data1: String =
-    """{
-      |"playerParty":{"characters": [{
-      |"name":"first", "hp":50, "maxHP":7, "battleOptions": ["","","",""]},
-      |{"name":"second", "hp":50, "maxHP":7, "battleOptions": ["","","",""]},
-      |{"name":"third", "hp":50, "maxHP":7, "battleOptions": ["","","",""]},
-      |{"name":"fourth", "hp":50, "maxHP":7, "battleOptions": ["","","",""]}]},
-      |
-      |"enemyParty":{"characters": [{
-      |"name":"first", "hp":50, "maxHP":7, "battleOptions": ["","","",""]},
-      |{"name":"second", "hp":50, "maxHP":7, "battleOptions": ["","","",""]},
-      |{"name":"third", "hp":50, "maxHP":7, "battleOptions": ["","","",""]},
-      |{"name":"fourth", "hp":50, "maxHP":7, "battleOptions": ["","","",""]}
-      |]}}""".stripMargin
+    """{"playerParty":{"characters": [
+      |{"name":"Archer", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"second", "hp":40, "maxHP":50, "battleOptions": ["heal","attack","nothing","nothing again"]},
+      |{"name":"third", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"fourth", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
+      |"enemyParty":{"characters": [
+      |{"name":"firsten", "hp":0, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"seconde", "hp":45, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"thirde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"fourthe", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
 
   var myParty: List[CharacterSample] = List()
   var enemy: List[CharacterSample] = List()

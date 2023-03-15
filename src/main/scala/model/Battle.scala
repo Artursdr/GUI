@@ -9,15 +9,16 @@ object Battle {
   //general information for characters and parties
 
   var string =
-    """{"playerParty":{"characters": [{"name":"first", "hp":50, "maxHP":50,
-      | "battleOptions": ["","","",""]},{"name":"second", "hp":40, "maxHP":50,
-      | "battleOptions": ["heal","attack","nothing","nothing again"]},{"name":"third", "hp":50, "maxHP":50,
-      | "battleOptions": ["","","",""]},{"name":"fourth", "hp":50, "maxHP":50,
-      | "battleOptions": ["","","",""]}]},"enemyParty":{"characters": [{"name":"firsten", "hp":0, "maxHP":50,
-      | "battleOptions": ["","","",""]},{"name":"seconde", "hp":45, "maxHP":50,
-      | "battleOptions": ["","","",""]},{"name":"thirde", "hp":50, "maxHP":50,
-      | "battleOptions": ["","","",""]},{"name":"fourthe", "hp":50, "maxHP":50,
-      | "battleOptions": ["","","",""]}]}}""".stripMargin
+    """{"playerParty":{"characters": [
+      |{"name":"Archer", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"second", "hp":40, "maxHP":50, "battleOptions": ["heal","attack","nothing","nothing again"]},
+      |{"name":"third", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"fourth", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
+      |"enemyParty":{"characters": [
+      |{"name":"firsten", "hp":0, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"seconde", "hp":45, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"thirde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+      |{"name":"fourthe", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
 
 
   var data = fromJSON(string)
@@ -26,15 +27,15 @@ object Battle {
   var enemyParty = data(1)
 
 
-  var char1 = party(0)
-  var char2 = party(1)
-  var char3 = party(2)
-  var char4 = party(3)
+  var YourChar1 = party(0)
+  var YourChar2 = party(1)
+  var YourChar3 = party(2)
+  var YourChar4 = party(3)
 
-  var char5 = enemyParty(0)
-  var char6 = enemyParty(1)
-  var char7 =enemyParty(2)
-  var char8 = enemyParty(3)
+  var EnemyChar1 = enemyParty(0)
+  var EnemyChar2 = enemyParty(1)
+  var EnemyChar3 =enemyParty(2)
+  var EnemyChar4 = enemyParty(3)
 
 
   // First button
@@ -48,27 +49,32 @@ object Battle {
   //Reset for original stats
   def reset(): Unit ={
     Battle.string =
-      """{"playerParty":{"characters": [{"name":"first", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},{"name":"second", "hp":50, "maxHP":50,
-        | "battleOptions": ["attack","heal","nothing","nothing2"]},{"name":"third", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},{"name":"fourth", "hp":50, "maxHP":50,
-        | "battleOptions": ["","","",""]}]},"enemyParty":{"characters": [{"name":"firste", "hp":50, "maxHP":50,
-        | "battleOptions": ["","","",""]},{"name":"seconde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},{"name":"thirde", "hp":50, "maxHP":50,
-        | "battleOptions": ["","","",""]},{"name":"fourthe", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
+      """{"playerParty":{"characters": [
+        |{"name":"first", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"second", "hp":50, "maxHP":50, "battleOptions": ["attack","heal","nothing","nothing2"]},
+        |{"name":"third", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"fourth", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]},
+        |"enemyParty":{"characters": [
+        |{"name":"firste", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}
+        |,{"name":"seconde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"thirde", "hp":50, "maxHP":50, "battleOptions": ["","","",""]},
+        |{"name":"fourthe", "hp":50, "maxHP":50, "battleOptions": ["","","",""]}]}}""".stripMargin
 
     data = fromJSON(string)
-    char1 = party(0)
-    char2 = party(1)
-    char3 = party(2)
-    char4 = party(3)
+    YourChar1 = party(0)
+    YourChar2 = party(1)
+    YourChar3 = party(2)
+    YourChar4 = party(3)
 
-    char5 = enemyParty(0)
-    char5.hp = char5.maxHP
-    char6 = enemyParty(1)
-    char7 =enemyParty(2)
-    char8 = enemyParty(3)
+    EnemyChar1 = enemyParty(0)
+    EnemyChar1.hp = EnemyChar1.maxHP
+    EnemyChar2 = enemyParty(1)
+    EnemyChar3 =enemyParty(2)
+    EnemyChar4 = enemyParty(3)
 
     BattleField.drawcharacters()
 
-    BattleField.hppy.text = char5.maxHP.toString + "/" + char5.maxHP.toString
+    BattleField.hppy.text = EnemyChar1.maxHP.toString + "/" + EnemyChar1.maxHP.toString
     BattleField.enemy.fill = Red
 
   }
@@ -115,7 +121,6 @@ object Battle {
 
     }
   }
-
 
 
   // var state = new Begin()

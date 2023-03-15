@@ -8,13 +8,14 @@ import scalafx.scene.paint.Color._
 import scalafx.scene.{Group, Scene}
 import scalafx.scene.control.Button
 import scalafx.scene.layout.{HBox, Pane, VBox}
-import scalafx.scene.shape.Rectangle
+import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.text.Text
-import model.Battle.{char1, char2, char3, char4, char5, char6, char7, char8, dataMap, enemyParty, party, string}
+import model.Battle.{YourChar1, YourChar2, YourChar3, YourChar4, EnemyChar1, EnemyChar2, EnemyChar3, EnemyChar4, dataMap}
 import model.CharacterSample
 import model.Testing.{enemy, fromJSON}
 import scalafx.animation.AnimationTimer
 import scalafx.scene.paint.Color
+
 import scala.collection.mutable.ListBuffer
 
 // BattleField Build
@@ -34,77 +35,75 @@ object BattleField extends JFXApp {
 
   //Your Character Party
 
-  var firstPlayer = new Rectangle {
-    width = sqX
-    height = sqY
-    if (char1.hp == 0) {
+
+  var firstPlayer = new Circle {
+    radius = sqX / 2
+    if (YourChar1.hp == 0) {
       fill = Black
     } else fill = Red
   }
 
   var name = new Text {
-    text = char1.name
+    text = YourChar1.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hpp = new Text {
-    text = char1.hp.toString + "/" + char1.maxHP.toString
+    text = YourChar1.hp.toString + "/" + YourChar1.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
 
-  var secondPlayer = new Rectangle {
-    width = sqX
-    height = sqY
-    if (char2.hp == 0) {
+  var secondPlayer = new Circle {
+    radius = sqX / 2
+    if (YourChar1.hp == 0) {
       fill = Black
     } else fill = Red
-
   }
+
   var name2 = new Text {
-    text = char2.name
+    text = YourChar2.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hpp2 = new Text {
-    text = char2.hp.toString + "/" + char2.maxHP.toString
+    text = YourChar2.hp.toString + "/" + YourChar2.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
 
-  var thirdPlayer = new Rectangle {
-    width = sqX
-    height = sqY
-    if (char3.hp == 0) {
+  var thirdPlayer = new Circle {
+    radius = sqX / 2
+    if (YourChar1.hp == 0) {
       fill = Black
     } else fill = Red
   }
 
   var name3 = new Text {
-    text = char3.name
+    text = YourChar3.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hpp3 = new Text {
-    text = char3.hp.toString + "/" + char3.maxHP.toString
+    text = YourChar3.hp.toString + "/" + YourChar3.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
 
-  var fourthPlayer = new Rectangle {
-    width = sqX
-    height = sqY
-    if (char4.hp == 0) {
+  var fourthPlayer = new Circle {
+    radius = sqX / 2
+    if (YourChar1.hp == 0) {
       fill = Black
     } else fill = Red
   }
+
   var name4 = new Text {
-    text = char4.name
+    text = YourChar4.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hpp4 = new Text {
-    text = char4.hp.toString + "/" + char1.maxHP.toString
+    text = YourChar4.hp.toString + "/" + YourChar1.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
@@ -145,18 +144,18 @@ object BattleField extends JFXApp {
   var enemy = new Rectangle {
     width = sqX
     height = sqY
-    if (char5.hp == 0){
+    if (EnemyChar1.hp == 0){
       fill = Black
     }else fill = Red
   }
 
   var naame = new Text {
-    text = char5.name
+    text = EnemyChar1.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hppy = new Text {
-    text = char5.hp.toString + "/" + char5.maxHP.toString
+    text = EnemyChar1.hp.toString + "/" + EnemyChar1.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
@@ -170,18 +169,18 @@ object BattleField extends JFXApp {
   var enemy2 = new Rectangle {
     width = sqX
     height = sqY
-    if (char6.hp == 0){
+    if (EnemyChar2.hp == 0){
       fill = Black
     }else fill = Red
   }
 
   var naame2 = new Text {
-    text = char6.name
+    text = EnemyChar2.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hppy2 = new Text {
-    text = char6.hp.toString + "/" + char1.maxHP.toString
+    text = EnemyChar2.hp.toString + "/" + YourChar1.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
@@ -195,18 +194,18 @@ object BattleField extends JFXApp {
   var enemy3 = new Rectangle {
     width = sqX
     height = sqY
-    if (char7.hp == 0){
+    if (EnemyChar3.hp == 0){
       fill = Black
     }else fill = Red
   }
 
   var naame3 = new Text {
-    text = char7.name
+    text = EnemyChar3.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hppy3 = new Text {
-    text = char7.hp.toString + "/" + char7.maxHP.toString
+    text = EnemyChar3.hp.toString + "/" + EnemyChar3.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
@@ -220,18 +219,18 @@ object BattleField extends JFXApp {
   var enemy4 = new Rectangle {
     width = sqX
     height = sqY
-    if (char8.hp == 0){
+    if (EnemyChar4.hp == 0){
       fill = Black
     }else fill = Red
   }
 
   var naame4 = new Text {
-    text = char8.name
+    text = EnemyChar4.name
     style = "-fx-font-size: 12pt"
     fill = Black
   }
   var hppy4 = new Text {
-    text = char8.hp.toString + "/" + char8.maxHP.toString
+    text = EnemyChar4.hp.toString + "/" + EnemyChar4.maxHP.toString
     style = "-fx-font-size: 12pt"
     fill = Black
   }
@@ -257,86 +256,81 @@ object BattleField extends JFXApp {
     partyGraphics = new Group()
 
     //First Character
-    var firstPlayer = new Rectangle {
-      width = sqX
-      height = sqY
-      if (char1.hp == 0) {
+    var firstPlayer = new Circle {
+      radius = sqX / 2
+      if (YourChar1.hp == 0) {
         fill = Black
       } else fill = Red
     }
 
     var name = new Text {
-      text = char1.name
+      text = YourChar1.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
     var hpp = new Text {
-      text = char1.hp.toString + "/" + char1.maxHP.toString
+      text = YourChar1.hp.toString + "/" + YourChar1.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
     //Second Character
-    var secondPlayer = new Rectangle {
-      width = sqX
-      height = sqY
-      if (char2.hp == 0) {
+    var secondPlayer = new Circle {
+      radius = sqX / 2
+      if (YourChar1.hp == 0) {
         fill = Black
       } else fill = Red
-
     }
 
     var name2 = new Text {
-      text = char2.name
+      text = YourChar2.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
     var hpp2 = new Text {
-      text = char2.hp.toString + "/" + char2.maxHP.toString
+      text = YourChar2.hp.toString + "/" + YourChar2.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
-    var thirdPlayer = new Rectangle {
-      width = sqX
-      height = sqY
-      if (char3.hp == 0) {
+    //Third Character
+    var thirdPlayer = new Circle {
+      radius = sqX / 2
+      if (YourChar1.hp == 0) {
         fill = Black
       } else fill = Red
     }
 
-    //Third Character
     var name3 = new Text {
-      text = char3.name
+      text = YourChar3.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
     var hpp3 = new Text {
-      text = char3.hp.toString + "/" + char3.maxHP.toString
+      text = YourChar3.hp.toString + "/" + YourChar3.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
     //Fourth Character
-    var fourthPlayer = new Rectangle {
-      width = sqX
-      height = sqY
-      if (char4.hp == 0) {
+    var fourthPlayer = new Circle {
+      radius = sqX / 2
+      if (YourChar1.hp == 0) {
         fill = Black
       } else fill = Red
     }
 
     var name4 = new Text {
-      text = char4.name
+      text = YourChar4.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
 
     var hpp4 = new Text {
-      text = char4.hp.toString + "/" + char1.maxHP.toString
+      text = YourChar4.hp.toString + "/" + YourChar1.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
@@ -377,18 +371,18 @@ object BattleField extends JFXApp {
     var enemy = new Rectangle {
       width = sqX
       height = sqY
-      if (char5.hp == 0){
+      if (EnemyChar1.hp == 0){
         fill = Black
       }else fill = Red
     }
 
     var naame = new Text {
-      text = char5.name
+      text = EnemyChar1.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
     var hppy = new Text {
-      text = char5.hp.toString + "/" + char5.maxHP.toString
+      text = EnemyChar1.hp.toString + "/" + EnemyChar1.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
@@ -402,18 +396,18 @@ object BattleField extends JFXApp {
     var enemy2 = new Rectangle {
       width = sqX
       height = sqY
-      if (char6.hp == 0){
+      if (EnemyChar2.hp == 0){
         fill = Black
       }else fill = Red
     }
 
     var naame2 = new Text {
-      text = char6.name
+      text = EnemyChar2.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
     var hppy2 = new Text {
-      text = char6.hp.toString + "/" + char1.maxHP.toString
+      text = EnemyChar2.hp.toString + "/" + YourChar1.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
@@ -427,18 +421,18 @@ object BattleField extends JFXApp {
     var enemy3 = new Rectangle {
       width = sqX
       height = sqY
-      if (char7.hp == 0){
+      if (EnemyChar3.hp == 0){
         fill = Black
       }else fill = Red
     }
 
     var naame3 = new Text {
-      text = char7.name
+      text = EnemyChar3.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
     var hppy3 = new Text {
-      text = char7.hp.toString + "/" + char7.maxHP.toString
+      text = EnemyChar3.hp.toString + "/" + EnemyChar3.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
@@ -452,18 +446,18 @@ object BattleField extends JFXApp {
     var enemy4 = new Rectangle {
       width = sqX
       height = sqY
-      if (char8.hp == 0){
+      if (EnemyChar4.hp == 0){
         fill = Black
       }else fill = Red
     }
 
     var naame4 = new Text {
-      text = char8.name
+      text = EnemyChar4.name
       style = "-fx-font-size: 12pt"
       fill = Black
     }
     var hppy4 = new Text {
-      text = char8.hp.toString + "/" + char8.maxHP.toString
+      text = EnemyChar4.hp.toString + "/" + EnemyChar4.maxHP.toString
       style = "-fx-font-size: 12pt"
       fill = Black
     }
