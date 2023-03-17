@@ -26,7 +26,7 @@ object BattleField extends JFXApp {
   val fieldX: Int = 800
   val fieldY: Int = 600
   val sqX: Int = 40
-  val sqY: Int = 50
+  val sqY: Int = 40
 
   //Groups
   var partyGraphics: Group = new Group{}
@@ -563,9 +563,9 @@ object BattleField extends JFXApp {
     height = fieldY
     //add x/y values in scene(x,y)
     scene = new Scene() {
-      fill = Color.Green
+      fill = Color.Yellow
       root = new Pane{
-        fill = Color.LightGreen
+        fill = Color.Orange
         children = List(partyGraphics,buttons,battleButtons)
       }
     }
